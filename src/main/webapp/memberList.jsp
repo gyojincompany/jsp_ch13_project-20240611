@@ -8,6 +8,11 @@
 <title>회원 리스트</title>
 </head>
 <body>
+	<%		
+		if(session.getAttribute("adminID") == null || !(session.getAttribute("adminID").equals("space"))) {
+			response.sendRedirect("login.jsp");
+		}
+	%>
 	<h2>회원 리스트</h2>
 	<hr>
 	회원번호 / 아이디 / 이메일 / 가입일시 <br>
