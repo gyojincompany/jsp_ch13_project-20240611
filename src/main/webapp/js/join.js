@@ -21,5 +21,5 @@ function joinCheck() {
 		return false;
 	}
 	
-	return True;
+	return true;
 }
