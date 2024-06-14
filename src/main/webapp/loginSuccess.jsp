@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관리자 로그인 성공</title>
 </head>
 <body>
 	<%
@@ -37,7 +37,7 @@
 			//int success = pstmt.executeUpdate();//sql문 실행(1이 반환되면 성공, 0이 반환되면 실패)
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {//참이면 로그인 성공->rs내에 반환되어진 레코드가 1개 존재				
+			if(rs.next() && amdinID.equals("space")) {//참이면 로그인 성공->rs내에 반환되어진 레코드가 1개 존재				
 				session.setAttribute("adminID", amdinID);
 			} else {//로그인 실패->rs내에 반환되어진 레코드가 0개
 				response.sendRedirect("loginErr.jsp");
@@ -59,7 +59,24 @@
 		}		
 	
 	%>
-	
+	<h2>관리자 로그인</h2>
+	<hr>
+	새로운 세션 성공!<br>
+	관리자 [<%= amdinID %>]님이 로그인 하셨습니다.<br>	
+	<table border="0">
+		<tr>
+			<td>
+				<form action="memberList.jsp">
+					<input type="submit" value="◀ 등록회원 관리하기">
+				</form>
+			</td>
+			<td>
+				<form action="logout.jsp">
+					<input type="submit" value="로그 아웃 ▶">
+				</form>
+			</td>
+		</tr>
+	</table>
 	
 </body>
 </html>
